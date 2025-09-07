@@ -117,14 +117,14 @@ if __name__ == "__main__":
     measurements = config.get("measurements")
 
     """
-    ограничить даты выгрузки: скрипт запускается раз в неделю (допустим, в понедельник),
-    скачивает данные с предыдущего понедельника по воскресенье, текущий понедельник не захватывает
-    и сохраняет все в csv   
+    ограничить даты выгрузки: start_day задается в .env
+    будут загружаться данные со дня = (сегодня - start_day) до сегодня - 1 (то есть вчерашнего дня)
       
     """
     today = date.today()
+    start_day = int(config.get("start_day"))
 
-    startDate = (today - timedelta(days=7)).strftime("%d.%m.%Y")
+    startDate = (today - timedelta(days=start_day)).strftime("%d.%m.%Y")
     endDate = (today - timedelta(days=1)).strftime("%d.%m.%Y")
 
     main()

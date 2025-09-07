@@ -9,3 +9,6 @@ config/.env
 venv/
 # Кэш Python
 __pycache__/
+
+# документация по API
+*.doc
